@@ -1,4 +1,6 @@
 FROM gitlab/gitlab-runner:v15.3.1
 
-RUN curl -L https://github.com/docker/machine/releases/download/v0.16.2/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine &&\
-    install /tmp/docker-machine /usr/local/bin/docker-machine
+# use of gitlab docker machine : https://gitlab.com/gitlab-org/ci-cd/docker-machine
+RUN curl -O "https://gitlab-docker-machine-downloads.s3.amazonaws.com/v0.16.2-gitlab.11/docker-machine-Linux-x86_64"
+RUN cp docker-machine-Linux-x86_64 /usr/local/bin/docker-machine
+RUN chmod +x /usr/local/bin/docker-machine
